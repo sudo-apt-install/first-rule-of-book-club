@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/sudo-apt-install/first-rule-of-book-club/issues"
   },
-  "homepage": "https://github.com/sudo-apt-install/first-rule-of-book-club#readme"
+  "homepage": "https://github.com/sudo-apt-install/first-rule-of-book-club#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
