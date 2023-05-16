@@ -1,6 +1,20 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+const axios = require('axios');
+
+// basic api call
+// router.get("/", async (req, res) => {
+//   try {
+//     const url = api url info
+
+//     const { data } = axios.get(url)
+
+//     res.render("homepage", data);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/', async (req, res) => {
   try {
