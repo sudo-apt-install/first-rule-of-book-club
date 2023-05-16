@@ -1,0 +1,8 @@
+*{
+    font-family: 'Roboto Slab', serif;
+}
+
+.navbarCust img {
+  width: 200px !important;
+  height: auto !important; 
+}
