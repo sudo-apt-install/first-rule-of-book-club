@@ -17,8 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // Inform Express.js on which template engine to use
-// app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+const hbs = exphbs.create({ helpers });
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 const io = require('socket.io')(SOCKETPORT);
 
