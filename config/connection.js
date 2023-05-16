@@ -3,8 +3,8 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.//GI) {
-    sequelize = new Sequelize(process.env.//GI);
+if (process.env.book_club) {
+    sequelize = new Sequelize(process.env.book_club);
 } else {
     sequelize = new Sequelize(
         process.env.DB_NAME,
