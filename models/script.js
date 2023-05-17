@@ -1,4 +1,4 @@
-import { io } from "socket.io-client";
-import { SOCKETPORT } from "../server";
+const { io } = require("socket.io-client");
+const { SOCKETPORT } = require("../server");
 
-const socket = io(SOCKETPORT); 
+const socket = io(SOCKETPORT);
