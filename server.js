@@ -33,8 +33,8 @@ app.listen(PORT, () =>
 );
 
 
-// io.on('connection', socket => {
-//     console.log(socket.id)
-// })
+io.on('connection', socket => {
+    console.log(socket.id)
+})
 
 // module.exports = sequelize;
