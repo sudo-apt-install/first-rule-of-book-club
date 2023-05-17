@@ -1,64 +1,25 @@
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-10 offset-md-1">
-        <h3>Search Results</h3>
-        <hr>
-        <div class="card-columns">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 1</h5>
-              <p class="card-text">Description of result 1.</p>
+ <div class="container">
+    <h1 class="mt-5 mb-4">Search Results</h1>
+    <ul class="list-group">
+      {{#each results}}
+      <li class="list-group-item">
+        <a href="/book/{{this.bookId}}">
+          <div class="row">
+            <div class="col-md-2">
+              <img src="{{this.coverPhoto}}" alt="Book Cover" class="img-thumbnail">
+            </div>
+            <div class="col-md-10">
+              <h4>{{this.title}}</h4>
+              <p>Author: {{this.authors}}</p>
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 2</h5>
-              <p class="card-text">Description of result 2.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 3</h5>
-              <p class="card-text">Description of result 3.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 4</h5>
-              <p class="card-text">Description of result 4.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 5</h5>
-              <p class="card-text">Description of result 5.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 6</h5>
-              <p class="card-text">Description of result 6.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 7</h5>
-              <p class="card-text">Description of result 7.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 8</h5>
-              <p class="card-text">Description of result 8.</p>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Result 9</h5>
-              <p class="card-text">Description of result 9.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+    <p class="mt-3">Total Items: {{total}}</p>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
