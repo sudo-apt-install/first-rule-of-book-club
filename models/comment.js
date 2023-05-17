@@ -29,12 +29,12 @@ Comment.init(
                  key: 'id'
             }
         },
-        game_id: { //Foreign Key
+        book_id: { //Foreign Key
             type: DataTypes.INTEGER,
             // autoincriment: true,
             allowNull: false,
             references: {
-                model: 'game',
+                model: 'book',
                 key: 'id'
             }
         }
@@ -48,8 +48,8 @@ Comment.init(
     }
     // .then(() => {
 
-    //     return QueryInterface.sequelize.query('ALTER TABLE `game_id` ADD' + 'CONSTRAINT `fk_game_id_games` FOREIGN KEY(`user_id, game_id`) REFERENCES'
-    //     + 'id(`game_id`)');
+    //     return QueryInterface.sequelize.query('ALTER TABLE `book_id` ADD' + 'CONSTRAINT `fk_book_id_games` FOREIGN KEY(`user_id, book_id`) REFERENCES'
+    //     + 'id(`book_id`)');
 
     // })
 
