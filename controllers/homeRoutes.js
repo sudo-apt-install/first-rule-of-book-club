@@ -4,8 +4,7 @@ const withAuth = require('../utils/auth');
 // node package to fetch API
 const axios = require('axios');
 // node package to clean api render
-const sanitizeHtml = require("sanitize-html");
-const axios = require('axios');
+const sanitizeHtml = require('sanitize-html');
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
