@@ -7,10 +7,11 @@ const helpers = require("./utils/helpers");
 const sequelize = require('sequelize');
 
 const app = express();
-const routes = require('./controllers');
+// const routes = require('./controllers');
 // Express middleware
 
 // Inform Express.js on which template engine to use
+const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

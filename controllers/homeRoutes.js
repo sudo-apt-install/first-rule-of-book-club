@@ -16,6 +16,30 @@ const axios = require('axios');
 //   }
 // });
 
+router.get('/login', (req, res) => {
+  // if user logged in redirect them to the profile page
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+// else, render the login page
+  res.render('login');
+});
+
+router.get('join/', (req, res) => {
+  // if user logged in redirect them to profile
+  if (req.session.logged_in) {
+    res.redirect("/profile");
+    return;
+  }
+  // else, render the join page
+  res.render("join");
+})
+
+router.get("/", async (req, res) => {
+  res.render("homepage");
+});router
+
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
