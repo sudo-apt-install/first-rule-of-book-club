@@ -1,8 +1,16 @@
-*{
-    font-family: 'Roboto Slab', serif;
+* {
+  font-family: "Roboto Slab", serif;
 }
 
-.navbarCust img {
-  width: 200px !important;
-  height: auto !important; 
+.grid-item {
+  margin-bottom: 20px;
+  padding-top: 40px; /* Add padding to the top */
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  max-width: 18rem;
 }
