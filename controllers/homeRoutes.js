@@ -29,39 +29,34 @@ router.get('join/', (req, res) => {
   res.render("join");
 })
 
-
-// API routes
-// keyword is genre & then include 0 to start index
-router.get("/search-results/:keyword/:startindex", (req, res) => {
-   axios
-     .get("https://www.googleapis.com/books/v1/volumes", {
-       params: {
-         q: req.params.keyword,
-         maxResults: 40,
-         startIndex: parseInt(req.params.startindex),
-         key: apiKey,
-       },
-     })
-     .then(({ data }) => {
-       const results = data.items.map((item) => {
-         const book = item.volumeInfo;
-         const coverPhoto = book.imageLinks?.thumbnail || "";
-         const authors = book.authors || [];
-         const bookId = item.id || "";
-         return {
-           title: book.title || "Unknown Title",
-           coverPhoto,
-           authors: authors.join(", ") || "Unknown Author",
-           bookId,
-         };
-       });
-
-       res.render("search-results", { results, total: data.totalItems });
-     })
-     .catch((err) => res.status(err.response.status).send("Error"));
+router.get("/", (req, res) => {
+  res.render("homepage");
 });
 
-// gets book info from the api and renders on the book page
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
+router.get("/join", (req, res) => {
+  res.render("join");
+});
+
+router.get("/rules", (req, res) => {
+  res.render("rules");
+});
+
+router.get("/search-results", (req, res) => {
+  res.render("search-results");
+});
+
+router.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
+
 router.get("/book/:bookId", (req, res) => {
   const bookId = req.params.bookId;
 
@@ -92,6 +87,35 @@ router.get("/book/:bookId", (req, res) => {
       console.error("Error fetching book details:", err);
       res.status(500).send("Error fetching book details");
     });
+});
+
+router.get("/search-results/:keyword/:startindex", (req, res) => {
+  axios
+    .get("https://www.googleapis.com/books/v1/volumes", {
+      params: {
+        q: req.params.keyword,
+        maxResults: 40,
+        startIndex: parseInt(req.params.startindex),
+        key: apiKey,
+      },
+    })
+    .then(({ data }) => {
+      const results = data.items.map((item) => {
+        const book = item.volumeInfo;
+        const coverPhoto = book.imageLinks?.thumbnail || "";
+        const authors = book.authors || [];
+        const bookId = item.id || "";
+        return {
+          title: book.title || "Unknown Title",
+          coverPhoto,
+          authors: authors.join(", ") || "Unknown Author",
+          bookId,
+        };
+      });
+
+      res.render("search-results", { results, total: data.totalItems });
+    })
+    .catch((err) => res.status(err.response.status).send("Error"));
 });
 
 module.exports = router;
