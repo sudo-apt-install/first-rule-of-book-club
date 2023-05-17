@@ -30,6 +30,7 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.22",
     "sequelize": "^6.31.1",
-    "socket.io": "^4.6.1"
+    "socket.io": "^4.6.1",
+    "sanitize-html": "^2.10.0"
   }
 }
