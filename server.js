@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const sequelize = require('sequelize');
 
 const app = express();
 const routes = require('./controllers');
@@ -31,4 +32,4 @@ io.on('connection', socket => {
     console.log(socket.id)
 })
 
-// module.exports = sequelize;
+module.exports = { sequelize, SOCKETPORT };

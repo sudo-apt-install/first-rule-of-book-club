@@ -1,3 +1,4 @@
 import { io } from "socket.io-client";
+import { SOCKETPORT } from "../server";
 
-// const socket = io("http://localhost:3001"); git
+const socket = io(SOCKETPORT); 
