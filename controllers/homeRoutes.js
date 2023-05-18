@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 const axios = require('axios');
 // node package to clean api render
 const sanitizeHtml = require('sanitize-html');
-const Bookshelf = require("../models/Bookshelf");
+// const Bookshelf = require("../models/Bookshelf");
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
