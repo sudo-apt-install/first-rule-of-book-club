@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 const axios = require('axios');
 // node package to clean api render
 const sanitizeHtml = require('sanitize-html');
-const Bookshelf = require("../models/Bookshelf");
+// const Bookshelf = require("../models/Bookshelf");
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
@@ -20,6 +20,10 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 router.get('join/', (req, res) => {
   // if user logged in redirect them to profile
   if (req.session.logged_in) {
@@ -30,9 +34,9 @@ router.get('join/', (req, res) => {
   res.render("join");
 })
 
-// router.get("/", (req, res) => {
-//   res.render("homepage");
-// });
+router.get("/", (req, res) => {
+  res.render("homepage");
+});
 
 // router.get("/login", (req, res) => {
 //   res.render("login");
