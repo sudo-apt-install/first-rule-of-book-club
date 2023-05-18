@@ -9,4 +9,7 @@ async function handlesLogin(event) {
     // if both user & password have been entered then convert them to json string
 
     // if login authenticated, load profile, else alert login status fail
-}
+};
+
+
+document.querySelector('.loginForm').addEventListener('submit', handlesLogin);

@@ -1,21 +1,58 @@
-  <div class="container">
-    <h1 class="mt-5 mb-4">Book Details</h1>
-    <div class="row">
-      <div class="col-md-4">
-        <img src="{{book.coverPhoto}}" alt="Book Cover" class="img-thumbnail">
-      </div>
-      <div class="col-md-8">
-        <h2>{{book.title}}</h2>
-        <p>Author(s): {{book.authors}}</p>
-        <p>Publish Date: {{book.publishedDate}}</p>
-        <p>Category: {{book.categories}}</p>
-        <p>Page Count: {{book.pageCount}}</p>
-        <p>Description: {{book.description}}</p>
-      </div>
+<div class="container">
+  <h1 class="mt-5 mb-4">Book Details</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{book.coverPhoto}}" alt="Book Cover" class="img-thumbnail" />
     </div>
-    <!-- Add a chat feature using a socket connection -->
+    <div class="col-md-8">
+      <h2>{{book.title}}</h2>
+      <p>Author(s): {{book.authors}}</p>
+      <p>Publish Date: {{book.publishedDate}}</p>
+      <p>Category: {{book.categories}}</p>
+      <p>Page Count: {{book.pageCount}}</p>
+      <p>Description: {{book.description}}</p>
+    </div>
   </div>
+  <div id="message-container"></div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <div>
+    <form class="form-inline my-2 my-lg-0" id="form">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Message"
+        aria-label="Search"
+        id="message-input"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+      >Send</button>
+    </form>
+  </div>
+  <div>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Room"
+        aria-label="Search"
+        id="room-input"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+        id="room"
+      >Join</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+></script>
+<script src="/models/script.js"></script>
