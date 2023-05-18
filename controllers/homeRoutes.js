@@ -11,7 +11,7 @@ require("dotenv").config();
 
 
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/search-results', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ['password'] },
@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
 
     const users = userData.map((project) => project.get({ plain: true }));
 
-    res.render('homepage', {
+    res.render('search-results', {
       users,
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
@@ -33,11 +33,11 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   // if user logged in redirect them to the profile page
-  // if (req.session.logged_in) {
-  //   res.redirect('/profile');
-  //   return;
-  // }
-// else, render the login page
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+// else render the login page
   res.render('login');
 });
 
@@ -83,37 +83,7 @@ router.get("/aboutus", (req, res) => {
   res.render("aboutus");
 });
 
-// router.get("/book/:bookId", (req, res) => {
-//   const bookId = req.params.bookId;
 
-//   axios
-//     .get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
-//       params: {
-//         key: apiKey,
-//       },
-//     })
-//     .then(({ data }) => {
-//       const book = {
-//         title: data.volumeInfo.title || "Unknown Title",
-//         authors: data.volumeInfo.authors || ["Unknown Author"],
-//         publishedDate: data.volumeInfo.publishedDate || "Unknown Publish Date",
-//         description:
-//           sanitizeHtml(data.volumeInfo.description, { allowedTags: [] }) ||
-//           "No description available.",
-//         categories: data.volumeInfo.categories || ["Uncategorized"],
-//         pageCount: data.volumeInfo.pageCount || 0,
-//         coverPhoto:
-//           data.volumeInfo.imageLinks?.thumbnail ||
-//           "https://example.com/default-cover.jpg",
-//       };
-
-//       res.render("book-page", { book });
-//     })
-//     .catch((err) => {
-//       console.error("Error fetching book details:", err);
-//       res.status(500).send("Error fetching book details");
-//     });
-// });
 
 router.get("/book/:bookId", (req, res) => {
   const bookId = req.params.bookId;
