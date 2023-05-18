@@ -10,5 +10,5 @@
 function showResults() {
   const searchInput = document.querySelector(".searchInput");
 
-  window.location.href = `/search-results/${searchInput.value}/0`;
+  window.location.href = `/search-results/${searchInput.value}`;
 }

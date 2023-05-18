@@ -89,13 +89,14 @@ router.get("/book/:bookId", (req, res) => {
     });
 });
 
-router.get("/search-results/:keyword/:startindex", (req, res) => {
+router.get("/search-results/:keyword", (req, res) => {
+ const startIndex =  req.query.startindex ?  parseInt(req.query.startindex) :  0
   axios
     .get("https://www.googleapis.com/books/v1/volumes", {
       params: {
         q: req.params.keyword,
         maxResults: 40,
-        startIndex: parseInt(req.params.startindex),
+        startIndex: startIndex,
         key: apiKey,
       },
     })
