@@ -13,7 +13,32 @@
       <p>Description: {{book.description}}</p>
     </div>
   </div>
+  
+  <div class="my-4">
+    <form id="bookshelf-form">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="bookshelf-select">Select Bookshelf</label>
+        <select class="form-control" id="bookshelf-select">
+          <option value="">Choose a bookshelf</option>
+          {{#each bookshelfNames}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Add to Bookshelf</button>
+    </form>
+  </div>
+  
   <div id="message-container"></div>
+  
+  <!-- Rest of your code -->
+</div>
+
+  
+
 
 <div>
   <form class="form-inline my-2 my-lg-0" id="form">

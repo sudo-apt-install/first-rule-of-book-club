@@ -1,25 +1,33 @@
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="css/images/profilepic (1).png" class="card-img-top" alt="Profile Picture">
-          <div class="card-body">
-            <h5 class="card-title">User</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img
+          src="css/images/profilepic (1).png"
+          class="card-img-top"
+          alt="Profile Picture"
+        />
+        <div class="card-body">
+          <h5 class="card-title">User</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit.</p>
         </div>
       </div>
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">User Details</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Favorite: book</li>
-              <li class="list-group-item">Current Read: book</li>
-              <li class="list-group-item">Joined: January 1, 2023</li>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">User Details</h5>
+          {{#each bookshelf}}
+            <h3>{{this.name}}</h3>
+            <ul>
+              {{#each this.books}}
+                <li>{{this}}</li>
+              {{/each}}
             </ul>
-          </div>
+          {{/each}}
         </div>
       </div>
     </div>
   </div>
+</div>

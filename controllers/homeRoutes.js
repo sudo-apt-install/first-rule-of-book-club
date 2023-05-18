@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 const axios = require('axios');
 // node package to clean api render
 const sanitizeHtml = require('sanitize-html');
+const Bookshelf = require("../models/Bookshelf");
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
@@ -57,8 +58,41 @@ router.get("/aboutus", (req, res) => {
   res.render("aboutus");
 });
 
+// router.get("/book/:bookId", (req, res) => {
+//   const bookId = req.params.bookId;
+
+//   axios
+//     .get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
+//       params: {
+//         key: apiKey,
+//       },
+//     })
+//     .then(({ data }) => {
+//       const book = {
+//         title: data.volumeInfo.title || "Unknown Title",
+//         authors: data.volumeInfo.authors || ["Unknown Author"],
+//         publishedDate: data.volumeInfo.publishedDate || "Unknown Publish Date",
+//         description:
+//           sanitizeHtml(data.volumeInfo.description, { allowedTags: [] }) ||
+//           "No description available.",
+//         categories: data.volumeInfo.categories || ["Uncategorized"],
+//         pageCount: data.volumeInfo.pageCount || 0,
+//         coverPhoto:
+//           data.volumeInfo.imageLinks?.thumbnail ||
+//           "https://example.com/default-cover.jpg",
+//       };
+
+//       res.render("book-page", { book });
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching book details:", err);
+//       res.status(500).send("Error fetching book details");
+//     });
+// });
+
 router.get("/book/:bookId", (req, res) => {
   const bookId = req.params.bookId;
+  const bookshelfNames = ["Favorites", "Currently Reading", "Want to Read"];
 
   axios
     .get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
@@ -81,13 +115,40 @@ router.get("/book/:bookId", (req, res) => {
           "https://example.com/default-cover.jpg",
       };
 
-      res.render("book-page", { book });
+      res.render("book-page", { book, bookshelfNames });
     })
     .catch((err) => {
       console.error("Error fetching book details:", err);
       res.status(500).send("Error fetching book details");
     });
 });
+
+router.get("/profile/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  // Retrieve the bookshelf data for the specific user from your database or storage
+  // For example, you can use your Bookshelf model to fetch the data
+
+  Bookshelf.findAll({
+    where: { user_id: userId },
+    include: [{ model: Book }],
+  })
+    .then((bookshelfData) => {
+      const bookshelf = bookshelfData.map((shelf) => ({
+        name: shelf.name,
+        books: shelf.Books.map((book) => book.title),
+      }));
+
+      res.render("user-profile", { bookshelf });
+    })
+    .catch((err) => {
+      console.error("Error fetching user bookshelf:", err);
+      res.status(500).send("Error fetching user bookshelf");
+    });
+});
+
+
+
 
 router.get("/search-results/:keyword", (req, res) => {
  const startIndex =  req.query.startindex ?  parseInt(req.query.startindex) :  0
