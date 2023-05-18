@@ -19,7 +19,7 @@
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="bookshelf-select">Select Bookshelf</label>
-        <select class="form-control" id="bookshelf-select">
+        <select class="form-control selectedBookshelf" id="bookshelf-select">
           <option value="">Choose a bookshelf</option>
           {{#each bookshelfNames}}
           <option value="{{this}}">{{this}}</option>
@@ -37,7 +37,6 @@
   <!-- Rest of your code -->
 </div>
 
-  
 
 
 <div>
@@ -75,3 +74,4 @@
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 ></script>
 <script src="../public/js/script.js"></script>
+<script src="../public/js/bookpage.js"></script>

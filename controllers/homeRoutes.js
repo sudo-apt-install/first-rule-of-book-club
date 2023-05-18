@@ -30,33 +30,33 @@ router.get('join/', (req, res) => {
   res.render("join");
 })
 
-router.get("/", (req, res) => {
-  res.render("homepage");
-});
+// router.get("/", (req, res) => {
+//   res.render("homepage");
+// });
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
+// router.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
-router.get("/profile", (req, res) => {
-  res.render("profile");
-});
+// router.get("/profile", (req, res) => {
+//   res.render("profile");
+// });
 
-router.get("/join", (req, res) => {
-  res.render("join");
-});
+// router.get("/join", (req, res) => {
+//   res.render("join");
+// });
 
-router.get("/rules", (req, res) => {
-  res.render("rules");
-});
+// router.get("/rules", (req, res) => {
+//   res.render("rules");
+// });
 
-router.get("/search-results", (req, res) => {
-  res.render("search-results");
-});
+// router.get("/search-results", (req, res) => {
+//   res.render("search-results");
+// });
 
-router.get("/aboutus", (req, res) => {
-  res.render("aboutus");
-});
+// router.get("/aboutus", (req, res) => {
+//   res.render("aboutus");
+// });
 
 // router.get("/book/:bookId", (req, res) => {
 //   const bookId = req.params.bookId;
@@ -123,31 +123,28 @@ router.get("/book/:bookId", (req, res) => {
     });
 });
 
-router.get("/profile/:userId", (req, res) => {
-  const userId = req.params.userId;
+// router.get("/profile/:userId", (req, res) => {
+//   const userId = req.params.userId;
 
-  // Retrieve the bookshelf data for the specific user from your database or storage
+//   // Retrieve the bookshelf data for the specific user from your database or storage
 
-  Bookshelf.findAll({
-    where: { user_id: userId },
-    include: [{ model: Book }],
-  })
-    .then((bookshelfData) => {
-      const bookshelf = bookshelfData.map((shelf) => ({
-        name: shelf.name,
-        books: shelf.Books.map((book) => book.title),
-      }));
+//   Bookshelf.findAll({
+//     where: { user_id: userId },
+//     include: [{ model: Book }],
+//   })
+//     .then((bookshelfData) => {
+//       const bookshelf = bookshelfData.map((shelf) => ({
+//         name: shelf.name,
+//         books: shelf.Books.map((book) => book.title),
+//       }));
 
-      res.render("user-profile", { bookshelf });
-    })
-    .catch((err) => {
-      console.error("Error fetching user bookshelf:", err);
-      res.status(500).send("Error fetching user bookshelf");
-    });
-});
-
-
-
+//       res.render("user-profile", { bookshelf });
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching user bookshelf:", err);
+//       res.status(500).send("Error fetching user bookshelf");
+//     });
+// });
 
 router.get("/search-results/:keyword", (req, res) => {
  const startIndex =  req.query.startindex ?  parseInt(req.query.startindex) :  0
