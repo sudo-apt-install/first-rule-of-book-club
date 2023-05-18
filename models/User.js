@@ -1,10 +1,7 @@
-//require sequelize, bcrypt and connection
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-
-//input class of User that extends Model based on Model framework
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -18,18 +15,21 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-
     username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [8],
       },
+    },
+    bookshelves: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+      defaultValue: ["Favorites", "Currently Reading", "Want to Read"],
     },
   },
   {
