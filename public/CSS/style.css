@@ -29,4 +29,18 @@ body {
   font-weight: bold;
 }
 
-.btn:hover
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.card-body .btn {
+  padding: 5px 10px;
+  font-size: 14px; 
+}
+
+.navbarCust {
+    max-width: 50%;
+    height: auto;
+    width: auto\9;
+}
+
