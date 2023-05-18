@@ -1,19 +1,13 @@
-const User = require('./User');
-const Book = require('./Book');
-const Comment = require('./script');
+const User = require("./User");
+const Bookshelf = require("./Bookshelf");
 
+User.hasMany(Bookshelf, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
 
-User.hasMany(Book);
+Bookshelf.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-Book.belongsTo(User);
-
-Comment.belongsTo(User);
-
-Comment.belongsTo(Book);
-
-User.hasMany(Comment);
-
-Book.hasMany(Comment);
-
-
-module.exports = { User, Book, Comment };
+module.exports = { User, Bookshelf };

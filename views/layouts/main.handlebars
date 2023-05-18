@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
+    <title>Book Club</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -46,26 +46,29 @@
                 <a class="nav-link" href="/rules">Rules</a>
               </li>
             </ul>
-            <form
+            {{!-- <form
               class="form-inline my-2 my-lg-0"
               action="/search-results"
               method="GET"
-            >
+            > --}}
               <input
-                class="form-control mr-sm-2"
+                class="form-control mr-sm-2 searchInput"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
                 name="keyword"
               />
               <button
-                class="btn btn-outline-primary my-2 my-sm-0"
+                class="btn btn-outline-primary my-2 my-sm-0 searchBtn"
                 type="submit"
+                onclick="showResults()"
               >
                 Search
               </button>
-            </form>
-            <button class="btn btn-outline-primary ml-2">Log In</button>
+            {{!-- </form> --}}
+           <a class="btn btn-outline-primary ml-2" href="/login">Log In</a>
+
+
           </div>
         </div>
       </nav>
@@ -75,7 +78,7 @@
       {{{body}}}
 
     </div>
-
+<script src="/js/index.js"></script>
   </body>
 
 </html>
