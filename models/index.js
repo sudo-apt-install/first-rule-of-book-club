@@ -1,7 +1,6 @@
-const User = require('./User');
-const Book = require('./Book');
-const Comment = require('./script');
-
+const User = require("./User");
+const Book = require("./Book");
+const Comment = require("../public/js/script");
 
 User.hasMany(Book);
 
@@ -14,6 +13,5 @@ Comment.belongsTo(Book);
 User.hasMany(Comment);
 
 Book.hasMany(Comment);
-
 
 module.exports = { User, Book, Comment };
