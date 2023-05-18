@@ -1,3 +1,8 @@
+// document.getElementById('log-in').addEventListener('click', function() {
+//     console.log('ding')
+//   });
+  
+
 async function handlesLogin(event) {
     event.preventDefault();
 
@@ -7,8 +12,22 @@ async function handlesLogin(event) {
     const password = document.querySelector('.passwordLogin').value.trim();
 
     // if both user & password have been entered then convert them to json string
+    if (username && password) {
+        const response = await fetch('/api/users/login', {
+          method: 'POST',
+          body: JSON.stringify({ username, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+    
 
-    // if login authenticated, load profile, else alert login status fail
+        // if login authenticated, load profile, else alert login status fail
+        if (response.ok) {
+          document.location.replace('/');
+        } else {
+          alert('Failed to log in');
+        }
+      }
+
 };
 
 

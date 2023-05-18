@@ -11,10 +11,10 @@ require("dotenv").config();
 
 router.get('/login', (req, res) => {
   // if user logged in redirect them to the profile page
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/profile');
+  //   return;
+  // }
 // else, render the login page
   res.render('login');
 });
@@ -33,9 +33,7 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
+
 
 router.get("/profile", (req, res) => {
   res.render("profile");
