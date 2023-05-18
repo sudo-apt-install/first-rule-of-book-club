@@ -12,67 +12,47 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img
-              class="navbarCust"
-              src="/css/images/Test-LOGO (1).png"
-              alt="Logo"
-              width="100"
-            />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/aboutus">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/rules">Rules</a>
-              </li>
-            </ul>
-            {{!-- <form
-              class="form-inline my-2 my-lg-0"
-              action="/search-results"
-              method="GET"
-            > --}}
-              <input
-                class="form-control mr-sm-2 searchInput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                name="keyword"
-              />
-              <button
-                class="btn btn-outline-primary my-2 my-sm-0 searchBtn"
-                type="submit"
-                onclick="showResults()"
-              >
-                Search
-              </button>
-            {{!-- </form> --}}
-           <a class="btn btn-outline-primary ml-2" href="/login">Log In</a>
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img class="navbarCust" src="/css/images/logo.png" alt="Logo">
+      </a>
 
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutus">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rules">Rules</a>
+          </li>
+        </ul>
 
-          </div>
-        </div>
-      </nav>
-    </header>
+        <input
+          class="form-control mr-sm-2 searchInput"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="keyword"
+        />
+        <button
+          class="btn btn-outline-primary my-2 my-sm-0 searchBtn"
+          type="submit"
+          onclick="showResults()"
+        >
+          Search
+        </button>
+
+        <a class="btn btn-outline-primary ml-2" href="/login">Log In</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
     <div class="container">
 
       {{{body}}}
