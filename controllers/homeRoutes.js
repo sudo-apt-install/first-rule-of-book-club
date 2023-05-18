@@ -10,6 +10,27 @@ const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
 
+// Prevent non logged in users from viewing the homepage
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['name', 'ASC']],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render('homepage', {
+      users,
+      // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.get('/login', (req, res) => {
   // if user logged in redirect them to the profile page
   // if (req.session.logged_in) {

@@ -1,10 +1,12 @@
 // document.getElementById('log-in').addEventListener('click', function() {
 //     console.log('ding')
 //   });
+console.log("we in")
   
 
 async function handlesLogin(event) {
     event.preventDefault();
+    console.log('ding')
 
     // value of username & password
     // trim removes white space at the beginning and end of string

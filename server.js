@@ -4,6 +4,9 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const crypto = require('crypto');
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 // Express middleware
@@ -11,6 +14,28 @@ const PORT = process.env.PORT || 3001;
 var http = require("http").Server(app);
 // const SOCKETPORT = process.env.PORT || 3002;
 const io = require("socket.io")(http);
+
+// Generate a random secret of a specific length
+function generateRandomSecret(length) {
+  const buffer = crypto.randomBytes(length);
+  return buffer.toString('hex');
+}
+const secret = generateRandomSecret(32); // Generate a 32-byte (256-bit) secret
+
+const userSession = {
+  secret: secret,
+  cookie: {
+    maxAge: 1800000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
 // Inform Express.js on which template engine to use
 const hbs = exphbs.create({ helpers });
@@ -34,4 +59,3 @@ io.on("connection", (socket) => {
   console.log(socket.id);
 });
 
-// module.exports = sequelize;
