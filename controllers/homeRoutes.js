@@ -127,7 +127,6 @@ router.get("/profile/:userId", (req, res) => {
   const userId = req.params.userId;
 
   // Retrieve the bookshelf data for the specific user from your database or storage
-  // For example, you can use your Bookshelf model to fetch the data
 
   Bookshelf.findAll({
     where: { user_id: userId },
