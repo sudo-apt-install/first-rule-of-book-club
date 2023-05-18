@@ -1,5 +1,13 @@
+:root {
+    --tan: #FFE6A7;
+    --brownsih: #BB9457;
+    --red: #6F1D1B;
+    --darkBrown: #432818;
+    --burnt: #99582A;
+}
+
 * {
-  font-family: "Roboto Slab", serif;
+  font-family: " ", serif;
 }
 
 .grid-item {
@@ -14,3 +22,11 @@ body {
 .card {
   max-width: 18rem;
 }
+
+.btn {
+  background-color: var(--red);
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover

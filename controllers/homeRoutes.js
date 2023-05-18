@@ -30,33 +30,33 @@ router.get('join/', (req, res) => {
   res.render("join");
 })
 
-// router.get("/", (req, res) => {
-//   res.render("homepage");
-// });
+router.get("/", (req, res) => {
+  res.render("homepage");
+});
 
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
+router.get("/login", (req, res) => {
+  res.render("login");
+});
 
-// router.get("/profile", (req, res) => {
-//   res.render("profile");
-// });
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
 
-// router.get("/join", (req, res) => {
-//   res.render("join");
-// });
+router.get("/join", (req, res) => {
+  res.render("join");
+});
 
-// router.get("/rules", (req, res) => {
-//   res.render("rules");
-// });
+router.get("/rules", (req, res) => {
+  res.render("rules");
+});
 
-// router.get("/search-results", (req, res) => {
-//   res.render("search-results");
-// });
+router.get("/search-results", (req, res) => {
+  res.render("search-results");
+});
 
-// router.get("/aboutus", (req, res) => {
-//   res.render("aboutus");
-// });
+router.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
 
 // router.get("/book/:bookId", (req, res) => {
 //   const bookId = req.params.bookId;
