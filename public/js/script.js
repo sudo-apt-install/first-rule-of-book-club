@@ -1,10 +1,10 @@
-console.log("hello");
-const { io } = require("socket.io-client");
-const { SOCKETPORT } = require("../../server");
+// const { io } = require("socket.io-client");
+// const { SOCKETPORT } = require("../../server");
 
-const socket = io(SOCKETPORT);
+var socket = io();
 
 const joinButton = document.getElementById("room");
+console.log(joinButton);
 const messageInput = document.getElementById("message-input");
 const roomInput = document.getElementById("room-input");
 const messageContainer = document.getElementById("message-container");
@@ -32,7 +32,8 @@ form.addEventListener("submit", (e) => {
   messageInput.value = "";
 });
 
-joinButton.addEventListener("click", () => {
+joinButton.addEventListener("click", (event) => {
+  event.preventDefault();
   console.log("ding");
   const room = roomInput.value;
 });

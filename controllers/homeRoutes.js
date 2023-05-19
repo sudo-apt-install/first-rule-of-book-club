@@ -1,34 +1,106 @@
 const router = require('express').Router();
-// const { Project, User } = require('../models');
+const { User } = require("../models/User");
 const withAuth = require('../utils/auth');
+const sequelize = require('sequelize'); 
 // node package to fetch API
 const axios = require('axios');
 // node package to clean api render
 const sanitizeHtml = require('sanitize-html');
-const Bookshelf = require("../models/Bookshelf");
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
+// router.post("/", async (req, res) => {
+//   try {
+//     const userData = await User.findOne({ where: { username: req.body.username } });
 
-router.get('/login', (req, res) => {
-  // if user logged in redirect them to the profile page
-  // if (req.session.logged_in) {
-  //   res.redirect('/profile');
-  //   return;
-  // }
-// else, render the login page
-  res.render('login');
-});
+//     if (!userData) {
+//       res
+//         .status(400)
+//         .json({ message: "Incorrect username or password, please try again" });
+//       return;
+//     }
 
-router.get('join/', (req, res) => {
-  // if user logged in redirect them to profile
+//     const validPassword = await userData.checkPassword(req.body.password);
+
+//     if (!validPassword) {
+//       res
+//         .status(400)
+//         .json({ message: "Incorrect username or password, please try again" });
+//       return;
+//     }
+
+//     req.session.save(() => {
+//       req.session.username = userData.username;
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+//       res.json({ user: userData.name, message: "You are now logged in!" });
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+
+
+// Prevent non logged in users from viewing the homepage
+
+router.get("/login", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/profile", {
+      loggedUser: req.session.username,
+      logged_in: req.session.logged_in,
+    });
     return;
   }
-  // else, render the join page
-  res.render("join");
-})
+  res.render("login");
+});
+
+
+
+router.get('/search-results', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['name', 'ASC']],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render('homepage', {
+      users,
+      // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+// router.get('/login', (req, res) => {
+//   // if user logged in redirect them to the profile page
+//   if (req.session.logged_in) {
+//     res.redirect('/profile');
+//     return;
+//   }
+// // else render the login page
+//   res.render('login');
+// });
+
+// router.get('/signup', (req, res) => {
+//   res.render('signup');
+// });
+
+// router.get('join/', (req, res) => {
+//   // if user logged in redirect them to profile
+//   if (req.session.logged_in) {
+//     res.redirect("/profile");
+//     return;
+//   }
+//   // else, render the join page
+//   res.render("join");
+// })
 
 // router.get("/", (req, res) => {
 //   res.render("homepage");
@@ -58,37 +130,7 @@ router.get('join/', (req, res) => {
 //   res.render("aboutus");
 // });
 
-// router.get("/book/:bookId", (req, res) => {
-//   const bookId = req.params.bookId;
 
-//   axios
-//     .get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
-//       params: {
-//         key: apiKey,
-//       },
-//     })
-//     .then(({ data }) => {
-//       const book = {
-//         title: data.volumeInfo.title || "Unknown Title",
-//         authors: data.volumeInfo.authors || ["Unknown Author"],
-//         publishedDate: data.volumeInfo.publishedDate || "Unknown Publish Date",
-//         description:
-//           sanitizeHtml(data.volumeInfo.description, { allowedTags: [] }) ||
-//           "No description available.",
-//         categories: data.volumeInfo.categories || ["Uncategorized"],
-//         pageCount: data.volumeInfo.pageCount || 0,
-//         coverPhoto:
-//           data.volumeInfo.imageLinks?.thumbnail ||
-//           "https://example.com/default-cover.jpg",
-//       };
-
-//       res.render("book-page", { book });
-//     })
-//     .catch((err) => {
-//       console.error("Error fetching book details:", err);
-//       res.status(500).send("Error fetching book details");
-//     });
-// });
 
 router.get("/book/:bookId", (req, res) => {
   const bookId = req.params.bookId;
@@ -123,28 +165,6 @@ router.get("/book/:bookId", (req, res) => {
     });
 });
 
-// router.get("/profile/:userId", (req, res) => {
-//   const userId = req.params.userId;
-
-//   // Retrieve the bookshelf data for the specific user from your database or storage
-
-//   Bookshelf.findAll({
-//     where: { user_id: userId },
-//     include: [{ model: Book }],
-//   })
-//     .then((bookshelfData) => {
-//       const bookshelf = bookshelfData.map((shelf) => ({
-//         name: shelf.name,
-//         books: shelf.Books.map((book) => book.title),
-//       }));
-
-//       res.render("user-profile", { bookshelf });
-//     })
-//     .catch((err) => {
-//       console.error("Error fetching user bookshelf:", err);
-//       res.status(500).send("Error fetching user bookshelf");
-//     });
-// });
 
 router.get("/search-results/:keyword", (req, res) => {
  const startIndex =  req.query.startindex ?  parseInt(req.query.startindex) :  0

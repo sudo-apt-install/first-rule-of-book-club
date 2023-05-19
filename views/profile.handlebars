@@ -1,16 +1,12 @@
 <div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <img
-          src="css/images/profilepic (1).png"
-          class="card-img-top"
-          alt="Profile Picture"
-        />
-        <div class="card-body">
-          <h5 class="card-title">User</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit.</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="css/images/profilepic (1).png" class="card-img-top" alt="Profile Picture">
+          <div class="card-body">
+            <h5 class="card-title">{{user.name}}</h5>
+            <p class="card-text">Show Some Spine</p>
+          </div>
         </div>
       </div>
     </div>
@@ -18,7 +14,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">User Details</h5>
-          {{#each bookshelf}}
+          {{#each user.bookshelf}}
             <h3>{{this.name}}</h3>
             <ul>
               {{#each this.books}}
