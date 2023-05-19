@@ -55,8 +55,6 @@ const { User } = require("../../models/User");
 //   }
 // });
 
-
-
 // router.get("/profile/:userId", (req, res) => {
 //   const userId = req.params.userId;
 
@@ -103,48 +101,57 @@ const { User } = require("../../models/User");
 //   }
 // });
 
-// router.post("/logout", (req, res) => {
-//   if (req.session.logged_in) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// });
+router.post("/logout", (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+
+
 
 router.post("/login", async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const { username, password } = req.body;
+
+    const userData = await User.findOne({ where: { username } });
 
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect username or password, please try again" });
-      return;
+      return res.status(400).json({
+        message: "Incorrect username or password, please try again",
+      });
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect username or password, please try again" });
-      return;
+      return res.status(400).json({
+        message: "Incorrect username or password, please try again",
+      });
     }
 
     req.session.save(() => {
       req.session.username = userData.username;
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.json({ user: userData.name, message: "You are now logged in!" });
+      res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res.status(500).json({message: "internal server"});
   }
 });
 
 
-
+// router.post("/login", (req, res) => {
+//   console.log(req.body); // Check the received request body
+//   const { username, password } = req.body;
+//   console.log(username, password); // Check the values of username and password
+//   // Handle the login logic
+// });
 
 module.exports = router;
