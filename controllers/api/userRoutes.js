@@ -114,37 +114,39 @@ router.post("/logout", (req, res) => {
 
 
 
-router.post("/login", async (req, res) => {
-  try {
-    const { username, password } = req.body;
+// router.post('/login', async (req, res) => {
+//   try {
+//     // const { username, password } = req.body;
+//       console.log()
 
-    const userData = await User.findOne({ where: { username } });
 
-    if (!userData) {
-      return res.status(400).json({
-        message: "Incorrect username or password, please try again",
-      });
-    }
+//     const userData = await User.findOne({ where: { username: req.body.username } });
 
-    const validPassword = await userData.checkPassword(password);
+//     if (!userData) {
+//       return res.status(400).json({
+//         message: 'Incorrect username or password, please try again',
+//       });
+//     }
 
-    if (!validPassword) {
-      return res.status(400).json({
-        message: "Incorrect username or password, please try again",
-      });
-    }
+//     const validPassword = await userData.checkPassword(req.body.password);
 
-    req.session.save(() => {
-      req.session.username = userData.username;
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      res.json({ user: userData, message: "You are now logged in!" });
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({message: "internal server"});
-  }
-});
+//     if (!validPassword) {
+//       return res.status(400).json({
+//         message: 'Incorrect username or password, please try again',
+//       });
+//     }
+
+//     req.session.save(() => {
+//       req.session.username = userData.username;
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+//       res.json({ user: userData, message: 'You are now logged in!' });
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({message: 'internal server'});
+//   }
+// });
 
 
 // router.post("/login", (req, res) => {
