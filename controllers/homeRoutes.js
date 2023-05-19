@@ -88,47 +88,38 @@ router.get('/search-results', withAuth, async (req, res) => {
 //   res.render('login');
 // });
 
-// router.get('/signup', (req, res) => {
-//   res.render('signup');
-// });
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 
-// router.get('join/', (req, res) => {
-//   // if user logged in redirect them to profile
-//   if (req.session.logged_in) {
-//     res.redirect("/profile");
-//     return;
-//   }
-//   // else, render the join page
-//   res.render("join");
-// })
 
-// router.get("/", (req, res) => {
-//   res.render("homepage");
-// });
+router.get("/", (req, res) => {
+  res.render("homepage");
+});
 
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
+router.get("/login", (req, res) => {
+  res.render("login");
+});
 
-// router.get("/profile", (req, res) => {
-//   res.render("profile");
-// });
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
 
-// router.get("/join", (req, res) => {
-//   res.render("join");
-// });
+router.get("/profile", (req, res) => {
+  res.render('profile');
+});
 
-// router.get("/rules", (req, res) => {
-//   res.render("rules");
-// });
+router.get("/rules", (req, res) => {
+  res.render("rules");
+});
 
-// router.get("/search-results", (req, res) => {
-//   res.render("search-results");
-// });
+router.get("/search-results", (req, res) => {
+  res.render("search-results");
+});
 
-// router.get("/aboutus", (req, res) => {
-//   res.render("aboutus");
-// });
+router.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
 
 
 
