@@ -60,7 +60,7 @@ sequelize.sync().then(() => {
 //     app.listen(PORT, () => console.log('Now listening'));
 //   });
 
-http.listen(PORT, () =>
+app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
 io.on("connection", (socket) => {
