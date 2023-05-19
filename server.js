@@ -6,6 +6,7 @@ const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const crypto = require('crypto');
 const sequelize = require('./config/connection');
+const Session = require("./models/session");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -37,6 +38,8 @@ const userSession = {
   })
 };
 
+app.use(session(userSession));
+
 // Inform Express.js on which template engine to use
 const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);
@@ -47,6 +50,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
+
+// Sync the database and create the sessions table
+sequelize.sync().then(() => {
+  console.log('Sessions table created');
+});
 
 // sequelize.sync({ force: false }).then(() => {
 //     app.listen(PORT, () => console.log('Now listening'));
