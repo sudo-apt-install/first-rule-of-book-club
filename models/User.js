@@ -26,10 +26,10 @@ User.init(
         len: [8],
       },
     },
-    bookshelves: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    bookshelf: {
+      type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: ["Favorites", "Currently Reading", "Want to Read"],
+      defaultValue: 1,
     },
   },
   {

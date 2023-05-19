@@ -1,29 +1,42 @@
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="css/images/profilepic (1).png" class="card-img-top" alt="Profile Picture">
-          <div class="card-body">
-            <h5 class="card-title">{{user.name}}</h5>
-            <p class="card-text">Show Some Spine</p>
-          </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="css/images/profilepic (1).png" class="card-img-top" alt="Profile Picture">
+        <div class="card-body">
+          <h5 class="card-title">raidboss</h5>
+          <p class="card-text">Show Some Spine</p>
         </div>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">User Details</h5>
-          {{#each user.bookshelf}}
-            <h3>{{this.name}}</h3>
-            <ul>
-              {{#each this.books}}
-                <li>{{this}}</li>
-              {{/each}}
-            </ul>
-          {{/each}}
-        </div>
+ <div class="row">
+  <div class="col-md-3">
+    <div class="card h-100 d-flex cardGrow">
+      <img src="/CSS/images/thename-ofthe-wind.png" class="card-img-top" alt="Book 1">
+      <div class="card-body">
+        <h5 class="card-title">Currently Reading</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card h-100 d-flex cardGrow">
+      <img src="/CSS/images/solo-leveling-vol-2-comic.jpg" class="card-img-top" alt="Book 2">
+      <div class="card-body">
+        <h5 class="card-title">Favorites</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card h-100 d-flex cardGrow">
+      <img src="/CSS/images/bestfriendexo.jpg" class="card-img-top" alt="Book 3">
+      <div class="card-body">
+        <h5 class="card-title">Want to Read</h5>
       </div>
     </div>
   </div>
 </div>
+  </div>
+</div>
+
+
