@@ -23,7 +23,7 @@ function generateRandomSecret(length) {
 const secret = generateRandomSecret(32); // Generate a 32-byte (256-bit) secret
 
 const userSession = {
-  secret: secret,
+  secret: 'secret',
   cookie: {
     maxAge: 1800000,
     httpOnly: true,
