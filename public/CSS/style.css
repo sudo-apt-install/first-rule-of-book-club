@@ -8,7 +8,7 @@
 
 * {
   font-family: " ", serif;
-  background-color: var(t);
+ 
 }
 
 .grid-item {
@@ -54,13 +54,13 @@ body {
 }
 
 .cuteBoard {
-  background-color: #FFF8E6; /* Replace with your desired background color */
-  border-radius: 10px; /* Adjust the border radius as needed */
-  padding: 15px; /* Add padding as desired */
+  background-color: #FFF0E8; 
+  border-radius: 10px;
+  padding: 15px; 
 }
 
 .cuteBoard table {
-  color: black; /* Set the text color for table content */
+  color: black;
 }
 
 .cuteBoard th {
