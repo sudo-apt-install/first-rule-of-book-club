@@ -3,8 +3,8 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.book_club) {
-  sequelize = new Sequelize(process.env.book_club);
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -13,7 +13,7 @@ if (process.env.book_club) {
     {
       host: 'localhost',
       dialect: 'mysql',
-    //   port: process.env.DB_PORT || 3306,
+      port: process.env.DB_PORT || 3306,
     }
   );
 }

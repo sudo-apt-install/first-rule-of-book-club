@@ -1,14 +1,13 @@
 :root {
-    --tan: #FFE6A7;
-    --brownsih: #BB9457;
-    --red: #6F1D1B;
-    --darkBrown: #432818;
-    --burnt: #99582A;
+  --tan: #ffe6a7;
+  --brownsih: #bb9457;
+  --red: #6f1d1b;
+  --darkBrown: #432818;
+  --burnt: #99582a;
 }
 
 * {
   font-family: " ", serif;
- 
 }
 
 .grid-item {
@@ -36,13 +35,13 @@ body {
 
 .card-body .btn {
   padding: 5px 10px;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 .navbarCust {
-    max-width: 50%;
-    height: auto;
-    width: auto\9;
+  max-width: 50%;
+  height: auto;
+  width: auto\9;
 }
 
 .cardGrow {
@@ -54,9 +53,9 @@ body {
 }
 
 .cuteBoard {
-  background-color: #FFF0E8; 
+  background-color: #fff0e8;
   border-radius: 10px;
-  padding: 15px; 
+  padding: 15px;
 }
 
 .cuteBoard table {
@@ -65,12 +64,12 @@ body {
 
 .cuteBoard th {
   font-weight: bold;
-  border-color: var(--burnt); 
+  border-color: var(--burnt);
 }
 
 .cuteBoard th,
 .cuteBoard td {
-  vertical-align: middle; 
+  vertical-align: middle;
   border-color: var(--burnt);
 }
 
@@ -85,4 +84,20 @@ body {
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.top-image {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.top-image img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.cute {
+  color: var(--red);
 }

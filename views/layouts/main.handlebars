@@ -7,57 +7,65 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="public/css/style.css" />
   </head>
 
   <body>
-<header>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img class="navbarCust cardGrow" src="/css/images/logo.png" alt="Logo">
-      </a>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img
+              class="navbarCust cardGrow"
+              src="/css/images/logo.png"
+              alt="Logo"
+            />
+          </a>
 
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/aboutus">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/rules">Rules</a>
-          </li>
-        </ul>
+          <div
+            class="collapse navbar-collapse justify-content-center"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/aboutus">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/rules">Rules</a>
+              </li>
+            </ul>
 
-        <input
-          class="form-control mr-sm-2 searchInput"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          name="keyword"
-        />
-        <button
-          class="btn btn-outline-primary my-2 my-sm-0 searchBtn"
-          type="submit"
-          onclick="showResults()"
-        >
-          Search
-        </button>
+            <input
+              class="form-control mr-sm-2 searchInput"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              name="keyword"
+            />
+            <button
+              class="btn btn-outline-primary my-2 my-sm-0 searchBtn"
+              type="submit"
+              onclick="showResults()"
+            >
+              Search
+            </button>
 
-        <a class="btn btn-outline-primary ml-2" href="/login">Login</a>
-      </div>
-    </div>
-  </nav>
-</header>
+            <a class="btn btn-outline-primary ml-2" href="/login">Login</a>
+            <a class="btn btn-primary ml-2" href="/signup">Join</a>
+          </div>
+        </div>
+      </nav>
+    </header>
 
     <div class="container">
 
       {{{body}}}
 
     </div>
-<script src="/js/index.js"></script>
+    <script src="/js/index.js"></script>
   </body>
 
 </html>
