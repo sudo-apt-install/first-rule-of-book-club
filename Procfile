@@ -1,1 +1,1 @@
-web: node server.js
+process type: node server.js
