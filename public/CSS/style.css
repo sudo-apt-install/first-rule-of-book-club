@@ -8,6 +8,7 @@
 
 * {
   font-family: " ", serif;
+  background-color: var(t);
 }
 
 .grid-item {
@@ -44,3 +45,44 @@ body {
     width: auto\9;
 }
 
+.cardGrow {
+  transition: transform 0.3s ease;
+}
+
+.cardGrow:hover {
+  transform: scale(1.05);
+}
+
+.cuteBoard {
+  background-color: #FFF8E6; /* Replace with your desired background color */
+  border-radius: 10px; /* Adjust the border radius as needed */
+  padding: 15px; /* Add padding as desired */
+}
+
+.cuteBoard table {
+  color: black; /* Set the text color for table content */
+}
+
+.cuteBoard th {
+  font-weight: bold;
+  border-color: var(--burnt); 
+}
+
+.cuteBoard th,
+.cuteBoard td {
+  vertical-align: middle; 
+  border-color: var(--burnt);
+}
+
+.card-img-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img-container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
