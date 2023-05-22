@@ -9,36 +9,36 @@ const sanitizeHtml = require('sanitize-html');
 const apiKey = process.env.API_KEY;
 require("dotenv").config();
 
-// router.post("/", async (req, res) => {
-//   try {
-//     const userData = await User.findOne({ where: { username: req.body.username } });
+router.post("/", async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { username: req.body.username } });
 
-//     if (!userData) {
-//       res
-//         .status(400)
-//         .json({ message: "Incorrect username or password, please try again" });
-//       return;
-//     }
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password, please try again" });
+      return;
+    }
 
-//     const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password);
 
-//     if (!validPassword) {
-//       res
-//         .status(400)
-//         .json({ message: "Incorrect username or password, please try again" });
-//       return;
-//     }
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password, please try again" });
+      return;
+    }
 
-//     req.session.save(() => {
-//       req.session.username = userData.username;
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-//       res.json({ user: userData.name, message: "You are now logged in!" });
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+    req.session.save(() => {
+      req.session.username = userData.username;
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.json({ user: userData.name, message: "You are now logged in!" });
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 
 
@@ -78,15 +78,7 @@ router.get('/search-results', withAuth, async (req, res) => {
 });
 
 
-// router.get('/login', (req, res) => {
-//   // if user logged in redirect them to the profile page
-//   if (req.session.logged_in) {
-//     res.redirect('/profile');
-//     return;
-//   }
-// // else render the login page
-//   res.render('login');
-// });
+
 
 router.get('/signup', (req, res) => {
   res.render('signup');
