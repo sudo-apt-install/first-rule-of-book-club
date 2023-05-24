@@ -12,7 +12,7 @@ const handlesLogin = async (event) => {
 
   // if both user & password have been entered then convert them to json string
    if (username && password) {
-     const login = await fetch('/api/users/login', {
+     const login = await fetch('api/users/login', {
        // might also be api/users/login but idk
        method: 'post',
        body: JSON.stringify({
@@ -22,13 +22,15 @@ const handlesLogin = async (event) => {
        headers: { "Content-Type": "application/json" },
      });
 
-     console.log(username, password, login);
+    //  console.log(username, password, login);
      // if login authenticated, load profile, else alert login status fail
      if (login.ok) {
        document.location.replace("/profile");
       console.log('works');
      } else {
+       console.log(login);
        alert("Failed to log in");
+       
      }
    }
 };

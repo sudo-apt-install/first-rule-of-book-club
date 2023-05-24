@@ -1,33 +1,22 @@
 const router = require("express").Router();
-const { User } = require("../../models/User");
+const { User } = require("../../models");
 
-// router.get("/api/users/login", (req, res) => {
-//     res.render("login");
-//   });
+// router.get("/:userId", (req, res) => {
+//   const userId = req.params.userId;
 
-// router.post("/", async (req, res) => {
-//   try {
-//     console.log(req.body);
-//     const userData = await User.create(req.body);
-
-//     req.session.save(() => {
-//       req.session.username = userData.username;
-//       req.session.user_id = userData.id;
-//       req.session.email = userData.email;
-//       req.session.logged_in = true;
-//     });
-
-//     res.status(200).json({ user: userData, message: "welcome!" });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(400).json(err);
-//   }
+//   console.log(userId);
+//   res.status(200);
 // });
 
-router.post("/", async (req, res) => {
+router.post("/login", async (req, res) => {
+  console.log(User)
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
 
+    const userData = await User.findOne({
+      where: { username: req.body.username },
+    });
+
+    console.log(req.body)
     if (!userData) {
       res
         .status(400)
@@ -111,14 +100,10 @@ router.post("/logout", (req, res) => {
   }
 });
 
-
-
-
 // router.post('/login', async (req, res) => {
 //   try {
 //     // const { username, password } = req.body;
 //       console.log()
-
 
 //     const userData = await User.findOne({ where: { username: req.body.username } });
 
@@ -147,7 +132,6 @@ router.post("/logout", (req, res) => {
 //     res.status(500).json({message: 'internal server'});
 //   }
 // });
-
 
 // router.post("/login", (req, res) => {
 //   console.log(req.body); // Check the received request body
