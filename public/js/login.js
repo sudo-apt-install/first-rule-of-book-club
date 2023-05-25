@@ -1,6 +1,3 @@
-console.log("we in")
-  
-
 const handlesLogin = async (event) => {
   event.preventDefault();
   console.log("ding");
