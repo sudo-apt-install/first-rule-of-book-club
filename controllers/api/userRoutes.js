@@ -9,12 +9,14 @@ const { User } = require("../../models");
 // });
 
 router.post("/login", async (req, res) => {
-  console.log(User)
+  // console.log(User)
   try {
 
     const userData = await User.findOne({
       where: { username: req.body.username },
     });
+
+    console.log(userData);
 
     console.log(req.body)
     if (!userData) {
@@ -40,6 +42,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData.name, message: "You are now logged in!" });
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

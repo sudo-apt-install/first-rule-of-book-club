@@ -27,11 +27,11 @@ User.init(
         len: [8],
       },
     },
-    bookshelf: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 1,
-    },
+    // bookshelf: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   defaultValue: 1,
+    // },
   },
   {
     hooks: {
